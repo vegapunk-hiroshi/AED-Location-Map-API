@@ -1,7 +1,6 @@
 from fastkml import kml
 from shapely.geometry import Point, MultiPoint
 from shapely.ops import nearest_points
-
 from utility.route import LonLat, Route
 
 
@@ -44,9 +43,9 @@ class Kml:
         return nearest_geoms[1]
 
 
-    def get_route(self, start, end):
-        print('start: ', start)
-        print('end: ', end)
+    def get_polyline(self, start, end):
         route = Route(start, end)
-        # TODO 
-        return route.get_direction()
+        polyline = route.get_direction()
+        return polyline
+
+

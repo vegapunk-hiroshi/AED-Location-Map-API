@@ -56,7 +56,6 @@ async def getKMLPath(longitude: float = 0, latitude: float = 0):
     my_location = LonLat(longitude, latitude)
     closest_aed = kml.get_closest_placemark(my_location)
     closest_aed = LonLat(closest_aed.x, closest_aed.y)
-    route = kml.get_route(my_location, closest_aed)
-    res = json.dumps(route)
-    print(res)
-    return res
+    return kml.get_polyline(my_location, closest_aed)
+    
+

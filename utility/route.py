@@ -20,5 +20,7 @@ class Route:
     
     def get_direction(self):
         routes = self.client.directions(self.coords)
-        print(routes)
-        return routes
+        # decode_polyline needs the geometry only
+        geometry = routes['routes'][0]['geometry']
+        decoded = openrouteservice.convert.decode_polyline(geometry)
+        return decoded
