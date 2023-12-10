@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from utility.kml import Kml
 from utility.route import LonLat, Route
+import json
 # import sys
 # print(sys.path)
 
@@ -56,5 +57,6 @@ async def getKMLPath(longitude: float = 0, latitude: float = 0):
     closest_aed = kml.get_closest_placemark(my_location)
     closest_aed = LonLat(closest_aed.x, closest_aed.y)
     route = kml.get_route(my_location, closest_aed)
-    
-    return route
+    res = json.dumps(route)
+    print(res)
+    return res
