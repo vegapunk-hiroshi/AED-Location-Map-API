@@ -42,9 +42,30 @@ app.add_middleware(
 
 @app.get("/locations")
 async def fast():
+    placemarks = []
     filepath = r"data/aed_aoba_20221223.kml"
     kml = Kml(filepath)
-    placemarks = kml.generate_placemark()
+    placemarks.extend(kml.generate_placemark())
+
+    filepath = r"data/aed_izumi_20221223.kml"
+    kml = Kml(filepath)
+    placemarks.extend(kml.generate_placemark())
+
+    print(placemarks)
+
+    filepath = r"data/aed_miyagino_20221223.kml"
+    kml = Kml(filepath)
+    placemarks.extend(kml.generate_placemark())
+
+    filepath = r"data/aed_taihaku_20221223.kml"
+    kml = Kml(filepath)
+    placemarks.extend(kml.generate_placemark())
+
+    filepath = r"data/aed_wakabayashi_20221223.kml"
+    kml = Kml(filepath)
+    placemarks.extend(kml.generate_placemark())
+
+    print(placemarks)
 
     return placemarks
 

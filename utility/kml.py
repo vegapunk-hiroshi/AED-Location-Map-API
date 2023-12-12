@@ -20,6 +20,7 @@ class Kml:
     def generate_placemark(self):
         with open(self.filepath, 'rt', encoding="utf-8") as the_file:
             doc = the_file.read()
+            doc = doc.encode('utf-8') # To avoid ValueError: Unicode strings with encoding declaration are not supported.
             k = kml.KML()
             k.from_string(doc)
             features = list(k.features())
