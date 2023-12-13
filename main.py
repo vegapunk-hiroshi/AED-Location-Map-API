@@ -23,57 +23,29 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# class Item(BaseModel):
-#     name: str
-#     description: str | None = None
-#     price: float
-#     tax: float = 10.5
-#     tags: list[str] = []
-
-# items = {
-#     "foo": {"name": "Foo", "price": 50.2},
-#     "bar": {"name": "Bar", "description": "The bartenders", "price": 62, "tax": 20.2},
-#     "baz": {"name": "Baz", "description": None, "price": 50.2, "tax": 10.5, "tags": []},
-# }
-
-# @app.get("/items/{item_id}", response_model=Item, response_model_exclude_unset=True)
-# async def read_item(item_id: str):
-#     return items[item_id]
 
 @app.get("/locations")
-async def fast():
-    placemarks = []
-    filepath = r"data/aed_aoba_20221223.kml"
-    kml = Kml(filepath)
-    placemarks.extend(kml.generate_placemark())
-
-    filepath = r"data/aed_izumi_20221223.kml"
-    kml = Kml(filepath)
-    placemarks.extend(kml.generate_placemark())
-
-    print(placemarks)
-
-    filepath = r"data/aed_miyagino_20221223.kml"
-    kml = Kml(filepath)
-    placemarks.extend(kml.generate_placemark())
-
-    filepath = r"data/aed_taihaku_20221223.kml"
-    kml = Kml(filepath)
-    placemarks.extend(kml.generate_placemark())
-
-    filepath = r"data/aed_wakabayashi_20221223.kml"
-    kml = Kml(filepath)
-    placemarks.extend(kml.generate_placemark())
-
-    print(placemarks)
-
+async def get_placemarks():
+    filepaths = []
+    filepaths.append(r"data/aed_aoba_20221223.kml")
+    filepaths.append(r"data/aed_izumi_20221223.kml")
+    filepaths.append(r"data/aed_miyagino_20221223.kml")
+    filepaths.append(r"data/aed_taihaku_20221223.kml")
+    filepaths.append(r"data/aed_wakabayashi_20221223.kml")
+    kml = Kml(filepaths)
+    placemarks = kml.generate_placemarks()
     return placemarks
 
 @app.get("/closest")
-async def getKMLPath(longitude: float = 0, latitude: float = 0):
-    filepath = r"data/aed_aoba_20221223.kml"
-    kml = Kml(filepath)
-    placemarks = kml.generate_placemark()
+async def get_closest_placemarks(longitude: float = 0, latitude: float = 0):
+    filepaths = []
+    filepaths.append(r"data/aed_aoba_20221223.kml")
+    filepaths.append(r"data/aed_izumi_20221223.kml")
+    filepaths.append(r"data/aed_miyagino_20221223.kml")
+    filepaths.append(r"data/aed_taihaku_20221223.kml")
+    filepaths.append(r"data/aed_wakabayashi_20221223.kml")
+    kml = Kml(filepaths)
+    placemarks = kml.generate_placemarks()
     my_location = LonLat(longitude, latitude)
     closest_aed = kml.get_closest_placemark(my_location)
     closest_aed = LonLat(closest_aed.x, closest_aed.y)

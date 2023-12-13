@@ -13,23 +13,24 @@ class PlaceMark:
         self.style: str = style
 
 class Kml:
-    def __init__(self, filepath):
-        self.filepath = filepath
+    def __init__(self, filepaths):
+        self.filepaths = filepaths
         self.placemarks = []
 
-    def generate_placemark(self):
-        with open(self.filepath, 'rt', encoding="utf-8") as the_file:
-            doc = the_file.read()
-            doc = doc.encode('utf-8') # To avoid ValueError: Unicode strings with encoding declaration are not supported.
-            k = kml.KML()
-            k.from_string(doc)
-            features = list(k.features())
-            feat = list(features[0].features())
-            for pm in feat[0]._features:
-                self.placemarks.append(
-                    PlaceMark(pm.name, pm.description, 
-                    pm.geometry.y, pm.geometry.x, pm.styleUrl)
-                )
+    def generate_placemarks(self):
+        for filepath in self.filepaths:
+            with open(filepath, 'rt', encoding="utf-8") as the_file:
+                doc = the_file.read()
+                doc = doc.encode('utf-8') # To avoid ValueError: Unicode strings with encoding declaration are not supported.
+                k = kml.KML()
+                k.from_string(doc)
+                features = list(k.features())
+                feat = list(features[0].features())
+                for pm in feat[0]._features:
+                    self.placemarks.append(
+                        PlaceMark(pm.name, pm.description, 
+                        pm.geometry.y, pm.geometry.x, pm.styleUrl)
+                    )
         return self.placemarks
 
     def get_closest_placemark(self, latlon: LonLat):
