@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from utility.kml import Kml
-from utility.route import LonLat, Route
+from src.kml import Kml
+from src.route import LonLat, Route
 import json
 # import sys
 # print(sys.path)
