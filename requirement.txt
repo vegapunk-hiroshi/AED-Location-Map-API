@@ -1,4 +1,0 @@
-shapely
-openrouteservice
-fastkml
-fastapi
