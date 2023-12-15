@@ -5,4 +5,4 @@
 
 docker build --tag aed-location-map ./
 
-docker run -d --name aed-location-map -e name='schnell' -p 80:8080 aed-location-map
+docker run -d --name aed-location-map -p 8000:8000 aed-location-map
