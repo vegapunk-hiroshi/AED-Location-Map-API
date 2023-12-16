@@ -16,6 +16,7 @@ origins = [
     "http://127.0.0.1:8000 ",
     "http://localhost:5174",
     "http://localhost:5173"
+    "http://vegapunk.club.s3-website-ap-northeast-1.amazonaws.com"
 ]
 
 app.add_middleware(
