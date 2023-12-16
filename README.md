@@ -8,7 +8,7 @@
 
 ## How to run docker container
 
-docker build --tag aed-location-map ./
+docker build --tag aed-map ./
 
 
 First build the docker image from the Dockerfile.
@@ -17,7 +17,7 @@ First build the docker image from the Dockerfile.
 
 
 
-docker run -d --name aed-location-map-container -p 8080:80 aed-location-map
+docker run -d --name aed-map -p 80:80 aed-map
 
 -d means running the container in background and print container ID.
 1. Without -d (Foreground Mode)
