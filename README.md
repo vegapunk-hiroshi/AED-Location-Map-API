@@ -42,7 +42,7 @@ ssh -i "~/.ssh/aed-location-map-ec2.pem" ec2-user@ec2-57-181-29-44.ap-northeast-
 http://localhost:8080/docs#/
 
 sudo yum install git, docker
-sudo systemctl start docker
+sudo systemctl start docker # to start docker daemon
 
 Generated and saved public key for ssh connection between my local and the ec2 instance.
 Likewise, between the ec2 instance and Github by generating ssh.
