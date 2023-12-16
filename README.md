@@ -37,6 +37,12 @@ docker run -d --name aed-location-map-container -p 8080:80 aed-location-map
 --name
 The --name flag in the docker run command is used to assign a specific name to the container you're running. Without this flag, Docker generates a random name for each container. Naming containers can be very useful for identification and management purposes.
 
-notes
+### notes
 ssh -i "~/.ssh/aed-location-map-ec2.pem" ec2-user@ec2-57-181-29-44.ap-northeast-1.compute.amazonaws.com
 http://localhost:8080/docs#/
+
+sudo yum install git, docker
+sudo systemctl start docker
+
+Generated and saved public key for ssh connection between my local and the ec2 instance.
+Likewise, between the ec2 instance and Github by generating ssh.
