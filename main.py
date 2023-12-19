@@ -6,21 +6,26 @@ from src.route import LonLat, Route
 import json
 # import sys
 # print(sys.path)
-
-app = FastAPI()
+environment = "dev"
 
 origins = [
     "http://106.172.29.214:80",
     "http://106.172.29.214",
     "https://106.172.29.214",
     "https://106.172.29.214/",
-    "http://localhost",
-    "https://d2xmjga6x6xkar.cloudfront.net/"
+    "https://d2xmjga6x6xkar.cloudfront.net/",
+    "http://127.0.0.1"
 ]
+allow_origin = {
+    "dev": "*", # This is required because the ports of request with the origin to the docker container changes.
+    "prod": origins # This is 
+}
+
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origins],
+    allow_origins=[allow_origin[environment]],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 8080
 # the host requires to be 0.0.0.0 instead of 127.0.0.1 because this will be deployed in the container where it needs to receive http request from the outside.
 # If 127.0.0.1(localhost) was set, then it can only points to the container itself.
 # Binding to 127.0.0.1 (localhost): If the server binds to 127.0.0.1, it's only reachable from the same machine on which it's running. This is a loopback address, often referred to as localhost.
