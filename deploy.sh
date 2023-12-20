@@ -7,4 +7,4 @@ docker image ls
 # Dev
 # docker run -d --name aed-map -p 8080:80 aed-map 
 # Prod
-docker run -d --name aed-map -p 8080:80 -p 443:80 aed-map 
+docker run -d --name aed-map -p 443:80 aed-map 
