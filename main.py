@@ -6,7 +6,7 @@ from src.route import LonLat, Route
 import json
 # import sys
 # print(sys.path)
-environment = "dev"
+environment = "prod"
 
 origins = [
     "http://106.172.29.214:80",
